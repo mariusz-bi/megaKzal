@@ -1,6 +1,6 @@
 # Zaliczenie
 Trochę spóźnione. Wiem...
-Niestety praca nie dała mi napisać o godzinę i parę miut wcześniej.
+Niestety praca nie dała mi napisać o godzinę i parę miut wcześniej. Do końca weekendu dopracowałbym apkę :(
 
 ## Działa server.
 wysłałem linka.
