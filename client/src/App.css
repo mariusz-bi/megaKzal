@@ -1,0 +1,32 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.App button {
+    width: 200px;
+    height: 30px;
+    margin-top: 15px;
+
+}
+
+.App button:hover {
+
+    color: white;
+}
+.App a {
+    text-decoration: none;
+    color: #223942;
+}
+
+.App a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+
+

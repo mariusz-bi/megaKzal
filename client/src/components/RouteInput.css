@@ -1,0 +1,30 @@
+.RouteInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: lightskyblue;
+    padding: 50px;
+
+}
+
+.information input {
+    width: 600px;
+    height: 30px;
+    padding-left: 5px;
+    margin: 5px 0 15px 0;
+
+}
+
+.information button {
+    width: 300px;
+    height: 30px;
+    margin-top: 15px;
+
+}
