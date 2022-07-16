@@ -5,7 +5,6 @@ const pool = createPool({
   user: 'root',
   database: 'routes',
   password: 'root',
-  port: 8889,
   namedPlaceholders: true,
   decimalNumbers: true,
 });
