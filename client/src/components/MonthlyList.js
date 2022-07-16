@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import axios from "axios";
+import {RoutesTable} from "./RoutesTable";
 
 export const MonthlyList = (props) => {
 
   const date = new Date();
  const [year, setYear] = useState(date.getFullYear());
   const [month, setMonth] = useState(date.getMonth());
-  const [routeList, setRouteList] = useState(null);
+  const [routesList, setRoutesList] = useState(null);
 
 const send = (e) => {
   e.preventDefault();
@@ -15,7 +16,8 @@ const send = (e) => {
 )
     .then((response) => {
 
-    setRouteList(response);
+    setRoutesList(response.data);
+    console.log(response.data);
 
     })
 };
@@ -45,6 +47,7 @@ const send = (e) => {
     </select>
     <button onClick={send}>Show routes</button>
   </form>
+  {routesList === null ? null : <RoutesTable routes={routesList}/>}
 
 
 </>

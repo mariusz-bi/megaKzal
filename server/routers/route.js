@@ -6,8 +6,6 @@ routeRouter
     .get('/', async (req, res)=> {
         const {month, year} = req.query;
         const routeList = await RouteRecord.listSelected(month, year);
-
-
         res.json(routeList);
 
 })
@@ -20,11 +18,13 @@ routeRouter
         const newRoute = new RouteRecord(data);
 
         await newRoute.insert();
-        //res.sendStatus(200);
+        res.sendStatus(200);
 
     })
-    .delete('/', (req, res) => {
-
+    .delete('/', async (req, res) => {
+        console.log(req.query);
+        await RouteRecord.deleteOne(req.query.id);
+      res.sendStatus(200);
     });
 
 module.exports = {

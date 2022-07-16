@@ -46,7 +46,8 @@ export const RouteInput = props => {
     const distFixed = ((results.routes[0].legs[0].distance.value)/1000).toFixed(2);
     setDistance(distFixed);
   setSingleRoute({
-    date, startPoint: startPointRef.current.value, endPoint: endPointRef.current.value, distance: distFixed}) ;
+    date, startPoint: startPointRef.current.value, endPoint: endPointRef.current.value, distance: distFixed});
+
   }
 
   const clearRoute = () =>{
@@ -61,7 +62,7 @@ export const RouteInput = props => {
   const sendRoute = () => {
     console.log(singleRoute.date);
     axios.post('http://localhost:3001/route', {
-      date: singleRoute.date,
+      date: dateReversedForBrowserToDisplay(singleRoute.date),
       startpoint: singleRoute.startPoint,
       endpoint: singleRoute.endPoint,
       duration: singleRoute.distance,

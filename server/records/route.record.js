@@ -4,7 +4,7 @@ const {v4: uuid} = require('uuid');
 
 class RouteRecord {
     constructor(obj) {
-        console.log(obj);
+
         if (!obj.date || !obj.startpoint || !obj.endpoint || !obj.duration ) {
             throw new ValidationError('przesłane dane nie są kompletne');
         }
@@ -20,7 +20,7 @@ class RouteRecord {
         if (!this.id) {
             this.id = uuid();
         }
-        console.log(this);
+
         await pool.execute("INSERT INTO `routeslist`(id, date, startpoint, endpoint, duration) VALUES (:id, :date, :startpoint, :endpoint, :duration)", {
             id: this.id,
             date: this.date,
@@ -31,20 +31,22 @@ class RouteRecord {
         });
         return this.id;
     }
-    static async listSelected(month, year){
+    static async listSelected(month, year) {
        const [results] = await pool
-           .execute(("SELECT * FROM `routeslist` WHERE EXTRACT(YEAR FROM `date`) = :year AND EXTRACT(MONTH FROM`date`) = :month"), {
+           .execute("SELECT * FROM `routeslist` WHERE EXTRACT(YEAR FROM `date`) = :year AND EXTRACT(MONTH" +
+             " FROM`date`) = :month ORDER BY `date` DESC", {
                month,
                year,
            });
 
+
        return results.map(obj => new RouteRecord(obj));
     }
     static async deleteOne(id) {
-        const [results] = await pool.execute("SELECT * FROM `routeslist` WHERE `id` = :id", {
+         await pool.execute("DELETE FROM `routeslist` WHERE `id` = :id", {
             id,
         });
-        return results.length === 0 ? null : new RouteRecord(results[0]);
+
     }
 
 }
