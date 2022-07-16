@@ -8,14 +8,14 @@ export const MonthlyList = (props) => {
   const [month, setMonth] = useState(date.getMonth());
   const [routeList, setRouteList] = useState(null);
 
-const send = () => {
+const send = (e) => {
+  e.preventDefault();
   axios
     .get(`http://localhost:3001/route/?year=${year}&month=${month}`
 )
     .then((response) => {
 
-      setRouteList((response.data).json());
-      console.log(routeList);
+    setRouteList(response);
 
     })
 };
@@ -45,6 +45,7 @@ const send = () => {
     </select>
     <button onClick={send}>Show routes</button>
   </form>
+
 
 </>
   )
